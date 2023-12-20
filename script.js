@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const row = document.createElement("tr");
         row.innerHTML = `
             <td style="text-align:center;">${name}</td>
-            <td style="text-align:center;"> </td>
+            <td style="text-align:center;" contenteditable="true"> </td>
             <td><input type="checkbox" name="attendance" onclick="updateTime(this)" /></td>
         `;
 
