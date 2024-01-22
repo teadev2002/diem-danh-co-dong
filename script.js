@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const sampleData = [
         "Trung Anh", "Thế  Anh", "Thanh Phong", "Hữu Tú", "Công Nam", "Minh Đăng",
         "Mai Thắng", "Mai Lợi", "Hữu Danh", "Thanh Hậu", "Phước Sang", "Minh Tú",
-        "Quang Thiệu", "Hải Đăng", "Tấn Lộc", "Nguyễn Chung", "Thiện Nghĩa", "Minh Hiếu"
+        "Quang Thiệu", "Hải Đăng", "Tấn Lộc", "Nguyễn Chung", "Thiện Nghĩa", "Minh Hiếu", "Tuấn Khải",
+         "Quốc Thái", "Hoàng Phúc"
     ];
 
     console.log(sampleData);
@@ -84,6 +85,7 @@ function saveCheckboxState() {
 
     localStorage.setItem('checkboxState', JSON.stringify(checkboxState));
 }
+<<<<<<< HEAD
 function restoreDataFromLocalStorage() {
     const storedData = JSON.parse(localStorage.getItem("attendanceData")) || {};
     const tableRows = document.querySelectorAll('#attendanceTableBody tr');
@@ -97,3 +99,5 @@ function restoreDataFromLocalStorage() {
         }
     });
 }
+=======
+>>>>>>> bdca92eda954f2d0e751e7d1de061c09ac5abecb
