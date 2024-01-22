@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const sampleData = [
         "Trung Anh", "Thế  Anh", "Thanh Phong", "Hữu Tú", "Công Nam", "Minh Đăng",
         "Mai Thắng", "Mai Lợi", "Hữu Danh", "Thanh Hậu", "Phước Sang", "Minh Tú",
-        "Quang Thiệu", "Hải Đăng", "Tấn Lộc", "Nguyễn Chung", "Thiện Nghĩa", "Minh Hiếu", "Tuấn Khải",
+        "Quang Thiệu", "Hải Đăng", "Tấn Lộc", "Đức Chung", "Thiện Nghĩa", "Minh Hiếu", "Tuấn Khải",
          "Quốc Thái", "Hoàng Phúc"
     ];
 
