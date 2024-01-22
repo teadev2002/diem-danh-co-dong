@@ -17,14 +17,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const row = document.createElement("tr");
         row.innerHTML = `
             <td style="text-align:center;">${name}</td>
-            <td style="text-align:center;" contenteditable="true"> </td>
+            <td style="text-align:center;" contenteditable="true"> ${storedData[name] || ''}</td>
             <td><input type="checkbox" name="attendance" onclick="updateTime(this)" /></td>
         `;
 
         // Nếu có dữ liệu đã lưu trữ, khôi phục giá trị thời gian
-        if (storedData[name]) {
-            row.querySelector('td:nth-child(2)').textContent = storedData[name];
-        }
+        // if (storedData[name]) {
+        //     row.querySelector('td:nth-child(2)').textContent = storedData[name];
+        // }
 
         tableBody.appendChild(row);
     });
@@ -83,4 +83,17 @@ function saveCheckboxState() {
     });
 
     localStorage.setItem('checkboxState', JSON.stringify(checkboxState));
+}
+function restoreDataFromLocalStorage() {
+    const storedData = JSON.parse(localStorage.getItem("attendanceData")) || {};
+    const tableRows = document.querySelectorAll('#attendanceTableBody tr');
+
+    tableRows.forEach(row => {
+        const name = row.querySelector('td:first-child').textContent;
+        const time = storedData[name];
+
+        if (time) {
+            row.querySelector('td:nth-child(2)').textContent = time;
+        }
+    });
 }
