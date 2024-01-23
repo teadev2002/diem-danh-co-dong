@@ -34,14 +34,29 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(updateCurrentTime, 1000);
 });
 
+// function updateTime(checkbox) {
+//     const currentTime = new Date().toLocaleTimeString('vi-VI', { hour: '2-digit', minute: '2-digit' });
+//     const row = checkbox.closest("tr").getElementsByTagName("td")[1];
+//     row.textContent = currentTime;
+
+//     // Lưu trạng thái dữ liệu vào Local Storage
+//     saveDataToLocalStorage();
+// }
 function updateTime(checkbox) {
     const currentTime = new Date().toLocaleTimeString('vi-VI', { hour: '2-digit', minute: '2-digit' });
     const row = checkbox.closest("tr").getElementsByTagName("td")[1];
-    row.textContent = currentTime;
 
-    // Lưu trạng thái dữ liệu vào Local Storage
+    // If the checkbox is checked, update the time; otherwise, delete the time value
+    if (checkbox.checked) {
+        row.textContent = currentTime;
+    } else {
+        row.textContent = "";
+    }
+
+    // Save the data to Local Storage
     saveDataToLocalStorage();
 }
+
 
 function clearAll() {
     if (confirm("Bạn có chắc chắn muốn xoá tất cả điểm danh không?")) {
