@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         row.innerHTML = `
             <td style="text-align:center;">${name}</td>
             <td style="text-align:center;" contenteditable="true"> </td>
-            <td><input type="checkbox" name="attendance" onclick="updateTime(this)" /></td>
+            <td ><input style="margin-left: 10%" class="form-check-input" type="checkbox" name="attendance" onclick="updateTime(this)" /></td>
         `;
 
         // Nếu có dữ liệu đã lưu trữ, khôi phục giá trị thời gian
@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //     // Lưu trạng thái dữ liệu vào Local Storage
 //     saveDataToLocalStorage();
 // }
+
 function updateTime(checkbox) {
     const currentTime = new Date().toLocaleTimeString('vi-VI', { hour: '2-digit', minute: '2-digit' });
     const row = checkbox.closest("tr").getElementsByTagName("td")[1];
