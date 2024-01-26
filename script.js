@@ -101,3 +101,10 @@ function saveCheckboxState() {
 
     localStorage.setItem('checkboxState', JSON.stringify(checkboxState));
 }
+function showTime() {
+	document.getElementById('currentDate').innerHTML = new Date().toLocaleDateString();
+}
+showTime();
+setInterval(function () {
+	showTime();
+}, 1000);

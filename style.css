@@ -1,35 +1,46 @@
-/* .toggle-container {
-    text-align: center;
-}
 
-#toggleButton {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #e74c3c!important;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-   
-}
 
-#toggleButton.active {
- 
-     background-color: #3498db;
-} */
-
-.toggle-container {
-    text-align: center;
-}
-
-.btn-primary.active {
-    background-color: #3498db;
-}
-
-.btn-primary:not(.active) {
-    background-color: #e74c3c;
-}
 .table>:not(caption)>*>*{
     padding: 0!important;
+}
+
+.header{
+    display: flex;
+    justify-content: space-around;
+}
+.text-head{
+    color: rgb(12, 11, 11);
+    text-align:center;
+    width: 40%;
+ 
+}
+
+
+
+
+
+body {
+     
+    padding: 1vh;
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+
+#header {
+    font-size: 3em;
+    font-weight: 100;
+    color: rgb(26, 40, 44);
+    text-shadow: 0 0 20px #cbd4d8;
+}
+
+#header div {
+    display: inline-block;
+    min-width: 90px;
+}
+
+#header div span {
+    color: #B1CDF1;
+    display: block;
+    font-size: .35em;
+    font-weight: 400;
 }
