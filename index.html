@@ -5,36 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Điểm danh cơ động</title>
-    
+
     <link rel="stylesheet" href="style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
-<center>
-    <div class="header" id="header">
-        <h4 id="currentDate"></h4> 
-        <h4 id="currentTime"></h4>
-    </div>
-    <div class="item">
-        <table style=" height: 10%;" class="table table-striped table-bordered ">
-            <thead>
-                <tr>
-                    <th class="text-head">Tên</th>
-                    <th class="text-head" style="width: 20%;">Thời gian</th>   
-                    <th class="text-head">Điểm danh</th>
-                </tr>
-            </thead>
-            <tbody id="attendanceTableBody">
+    <center>
+        <div class="header" id="header">
+            <h4 id="currentDate"></h4>
+            <h4 id="currentTime"></h4>
+        </div>
+        <div class="item">
+            <table style=" height: 10%;" class="table table-striped table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-head">Tên</th>
+                        <th class="text-head" style="width: 20%;">Thời gian</th>
+                        <th class="text-head">Điểm danh</th>
+                    </tr>
+                </thead>
+                <tbody id="attendanceTableBody">
 
-            </tbody>
-        </table>
-    </div>
-    <button class="btn btn-danger" onclick="clearAll()">Xóa hết</button>
-    
-</center>
-    
+                </tbody>
+            </table>
+        </div>
+        <div class="func">
+
+            <button class="btn btn-primary" onclick="sortByTime()">Sắp xếp</button> &nbsp; &nbsp; &nbsp;
+            <button class="btn btn-danger" onclick="clearAll()">Xóa hết</button>
+        </div>
+    </center>
+
     <script src="script.js"></script>
 </body>
 

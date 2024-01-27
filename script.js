@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(sampleData);
     // Điền bảng với dữ liệu từ Local Storage hoặc mẫu
     sampleData.forEach(name => {
-        const row = document.createElement("tr");
+        const row = document.createElement("tr"); 
         row.innerHTML = `
             <td style="text-align:center;">${name}</td>
             <td style="text-align:center;" contenteditable="true"> </td>
@@ -88,9 +88,14 @@ function saveDataToLocalStorage() {
         dataToSave[name] = time;
     });
 
-    // Lưu dữ liệu vào Local Storage
+    // Save the data to Local Storage
     localStorage.setItem("attendanceData", JSON.stringify(dataToSave));
+
+   
+   
 }
+
+ 
 function saveCheckboxState() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const checkboxState = {};
@@ -108,3 +113,42 @@ showTime();
 setInterval(function () {
 	showTime();
 }, 1000);
+let sorted = false;
+
+function sortByTime() {
+    const tableBody = document.getElementById("attendanceTableBody");
+    const rows = Array.from(tableBody.querySelectorAll("tr"));
+
+    // Toggle sorting direction
+    sorted = !sorted;
+
+    // Sort the rows based on the time value in the second column
+    rows.sort((rowA, rowB) => {
+        const timeA = rowA.querySelector("td:nth-child(2)").textContent;
+        const timeB = rowB.querySelector("td:nth-child(2)").textContent;
+
+        if (!timeA && !timeB) {
+            return 0;
+        } else if (!timeA) {
+            return 1;
+        } else if (!timeB) {
+            return -1;
+        } else {
+            // Convert time strings to Date objects for comparison
+            const dateA = new Date(`2000-01-01 ${timeA}`);
+            const dateB = new Date(`2000-01-01 ${timeB}`);
+            return sorted ? dateA - dateB : dateB - dateA; // Sort in ascending or descending order
+        }
+    });
+
+    // Remove existing rows from the table
+    while (tableBody.firstChild) {
+        tableBody.removeChild(tableBody.firstChild);
+    }
+
+    // Append sorted rows to the table
+    rows.forEach(row => {
+        tableBody.appendChild(row);
+    });
+}
+ 
