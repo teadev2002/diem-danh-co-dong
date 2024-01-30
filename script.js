@@ -152,3 +152,10 @@ function sortByTime() {
     });
 }
  
+function showTimetable(){
+    document.getElementById('overlay').style.display = 'block';
+ 
+  }
+  function closeTimetable(){
+    document.getElementById('overlay').style.display = 'none';
+  }
