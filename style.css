@@ -34,17 +34,25 @@
     backdrop-filter: blur(10px);
 }
 .tkb img{ 
-    width: 90%;
+    width: 99%;
+    display: flex;
+    justify-content: center;
 
+   
 
 }
+
 .tkb{
 
     display: flex;
     
     justify-content: center;
     margin-top: 10vh;
+    
+
 }
+
+
  /* ========================== */
 
 body {
