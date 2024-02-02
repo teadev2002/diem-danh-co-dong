@@ -159,3 +159,95 @@ function showTimetable(){
   function closeTimetable(){
     document.getElementById('overlay').style.display = 'none';
   }
+  function opentx(){
+    document.getElementById('overlaytx').style.display = 'block';
+ 
+  }
+  function closetx(){
+    document.getElementById('overlaytx').style.display = 'none';
+  }
+
+  function opennap(){
+    document.getElementById('overlaynap').style.display = 'block';
+ 
+  }
+  function closenap(){
+    document.getElementById('overlaynap').style.display = 'none';
+  }
+  function naptien() {
+    // Get the entered value
+    var enteredValue = document.getElementById("napvaovi").value;
+
+    // Convert the entered value to a number
+    var enteredAmount = parseFloat(enteredValue);
+
+    // Check if the entered amount is non-negative
+    if (enteredAmount >= 0) {
+        // Get the current balance
+        var currentBalance = parseFloat(document.getElementById("sodu").innerText);
+
+        // Update the balance by adding the entered amount
+        var newBalance = currentBalance + enteredAmount;
+
+        // Update the balance display
+        document.getElementById("sodu").innerText = newBalance;
+    } else {
+        // Show an error message or take other appropriate actions for negative input
+        alert("KHÔNG THỂ NẠP TIỀN DƯỚI 0");
+    }
+    closenap();
+}
+
+function handleBet() {
+    // Get user's choice
+    var userChoice = document.querySelector('input[name="flexRadioDefault"]:checked');
+    if (!userChoice) {
+        alert("Vui lòng chọn Chẵn hoặc Lẻ.");
+        return;
+    }
+
+    // Get user's bet amount
+    var betAmount = parseFloat(document.getElementById("betmoney").value);
+    if (isNaN(betAmount) || betAmount <= 0) {
+        alert("Vui lòng nhập số tiền cược hợp lệ.");
+        return;
+    }
+
+    // Get current balance
+    var currentBalance = parseFloat(document.getElementById("sodu").innerText);
+
+    // Check if the bet amount is less than or equal to the current balance
+    if (betAmount > currentBalance) {
+        alert("Số tiền cược không được lớn hơn số dư hiện tại.");
+        return;
+    }
+
+    // Generate a random number between 1 and 9
+    var randomNumber = Math.floor(Math.random() * 9) + 1;
+
+    // Determine if the result is even or odd
+    var isResultEven = randomNumber % 2 === 0;
+
+    // Variable to track win/loss status
+    var winStatus;
+
+    // Check user's choice
+    if ((userChoice.id === "even" && isResultEven) || (userChoice.id === "odd" && !isResultEven)) {
+        // User wins
+        winStatus = true;
+        alert("Thắng! Số ngẫu nhiên: " + randomNumber);
+    } else {
+        // User loses
+        winStatus = false;
+        alert("Thua! Số ngẫu nhiên: " + randomNumber);
+    }
+
+    // Update the balance display based on win/loss status
+    if (winStatus) {
+        currentBalance += betAmount;
+    } else {
+        currentBalance -= betAmount;
+    }
+
+    document.getElementById("sodu").innerText = currentBalance;
+}

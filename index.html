@@ -47,10 +47,71 @@
             </div>
             <!-- /* ========================== */ -->
             <!-- <a target="_blank" class="btn btn-secondary" href="https://www.tiktok.com/"> Giải trí</a > -->
+                <button class="btn btn-secondary" onclick="opentx()">Chẵn lẻ</button>
         </div>
 
 
+<!-- =======game================== -->
 
+
+<div class="popup-game" id="overlaytx">
+    <div class="wallet">
+        <div class="wallet">
+            <div class="sodu">
+                <h5>Số dư: </h5>
+                <h4 id="sodu">0</h4>
+            </div>
+            <div class="naptien">
+                <button class="btn btn-warning" onclick="opennap()">Nạp tiền</button>
+            </div>
+            <!-- ==========popup-naptien====================== -->
+            <div class="popup-naptien" id="overlaynap">
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping">$</span>
+                    <input type="number" class="form-control" placeholder="Nhập tiền" id="napvaovi">
+                </div>
+                <button class="btn btn-success" onclick="naptien()">Nạp</button>
+                <button class="btn btn-danger" onclick="closenap()">Đóng</button>
+            </div>
+            <!-- ===========popup-naptien============================ -->
+        </div>
+    
+    <h1>Chẵn lẻ</h1>
+    <h3>Hãy chọn Chẵn / lẻ</h3>
+    
+    <div class="choose">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="even">
+            <label class="btn btn-primary" for="even">
+                Chẵn
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="odd">
+            <label class="btn btn-danger" for="odd">
+                Lẻ
+            </label>
+        </div>
+    </div>
+    <div class="bet">
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">$</span>
+            <input type="number" class="form-control" placeholder="Nhập tiền cược" id="betmoney">
+        </div>
+        <div>
+            <button class="btn btn-success" id="bet" onclick="handleBet()">Cược</button>
+        </div>
+    </div>
+    <div class="result">
+        <!-- <h2>Kết quả</h2> -->
+        <h1 id="result" style="color: greenyellow;"></h1>
+    </div>
+    
+    <div class="close" id="closetx">
+        <button class="btn btn-danger" onclick="closetx()">Đóng game</button>
+    </div>
+</div>
+<!-- ============================== -->
     </center>
 
     <script src="script.js"></script>
