@@ -93,10 +93,10 @@ body {
     justify-content: center;
     text-align: center;
     border-radius: 10px;
-    border: 1px solid rgb(173, 226, 138);
+    border: 1px solid #08a4c1;
     margin: 0 5vh;
     margin:1vh 0 ;
-    background-color: rgb(179, 249, 132);
+    background-color: #08a4c1;
 }
 .popup-naptien{
     display: none;
