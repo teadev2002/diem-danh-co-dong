@@ -159,6 +159,10 @@ function showTimetable(){
   function closeTimetable(){
     document.getElementById('overlay').style.display = 'none';
   }
+
+
+
+
   function opentx(){
     document.getElementById('overlaytx').style.display = 'block';
  
