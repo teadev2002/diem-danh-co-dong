@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Dữ liệu mẫu với tên có dấu
     const sampleData = [
         "Trung Anh", "Thế  Anh", "Thanh Phong", "Hữu Tú", "Công Nam", "Minh Đăng",
-        "Mai Thắng", "Mai Lợi", "Hữu Danh", "Thanh Hậu", "Phước Sang", "Minh Tú",
+        "Mai Thắng", "Mai Lợi", "Hữu Danh", "Thanh Hậu", "Minh Tú",
         "Quang Thiệu", "Hải Đăng", "Tấn Lộc", "Đức Chung", "Thiện Nghĩa", "Minh Hiếu", "Tuấn Khải",
          "Quốc Thái", "Hoàng Phúc", "Công Tài", "Trung Hiếu"
     ];
