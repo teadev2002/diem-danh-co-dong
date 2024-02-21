@@ -1,25 +1,26 @@
-
-
-.table>:not(caption)>*>*{
-    padding: 0!important;
+.table>:not(caption)>*>* {
+    padding: 0 !important;
 }
 
-.header{
+.header {
     display: flex;
     justify-content: space-around;
 }
-.text-head{
+
+.text-head {
     color: rgb(235, 229, 229);
-    text-align:center;
+    text-align: center;
     width: 40%;
- 
+
 }
-.func{
+
+.func {
     display: flex;
     justify-content: center;
 }
- /* ========================== */
-.popup{
+
+/* ========================== */
+.popup {
     display: none;
     position: absolute;
     top: 0;
@@ -27,38 +28,41 @@
 
     width: 100%;
     height: 100%;
-  
+
     backdrop-filter: blur(20px);
 }
-.tkb img{ 
+
+.tkb img {
     width: 99%;
     display: flex;
     justify-content: center;
- 
+
 
 }
 
-.tkb{
+.tkb {
 
     display: flex;
-    
+
     justify-content: center;
     margin-top: 10vh;
-       align-items: center;
-   
+    align-items: center;
+
 
 }
 
 
- /* ========================== */
+/* ========================== */
 
 body {
-     
     padding: 1vh;
     font-family: sans-serif;
     font-weight: lighter;
+    /* background-image: url(img/dragon.jpg);
+    background-repeat: no-repeat;
+     */
 }
-
+ 
 #header {
     font-size: 3em;
     font-weight: 100;
@@ -77,45 +81,52 @@ body {
     font-size: .35em;
     font-weight: 400;
 }
- 
 
 
-.container{
+
+.container {
     display: flex;
     justify-content: center;
     margin: 5vh;
 }
-.popup-game{
+
+.popup-game {
     display: none;
     justify-content: center;
     text-align: center;
     border-radius: 10px;
     border: 1px solid #08a4c1;
     margin: 0 5vh;
-    margin:1vh 0 ;
+    margin: 1vh 0;
     background-color: #08a4c1;
 }
-.popup-naptien{
+
+.popup-naptien {
     display: none;
     text-align: center;
-  
+
     border-radius: 10px;
-    
-    
+
+
 }
-.popup-game .btn{
+
+.popup-game .btn {
     margin: 10px;
 }
-.choose{
+
+.choose {
     display: flex;
     justify-content: space-around;
     text-align: center;
 }
-.sodu, .wallet{
+
+.sodu,
+.wallet {
     display: block;
     justify-content: flex-start;
 }
- .tiktok{
+
+.tiktok {
     width: 20px;
     height: 20px;
- }
+}
