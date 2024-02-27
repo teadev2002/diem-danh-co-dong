@@ -9,18 +9,19 @@
     <link rel="stylesheet" href="style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
-    
+
     <center>
-         
-        
+
+
         <div class="header" id="header">
             <h4 id="currentDate"></h4>
             <h4 id="currentTime"></h4>
         </div>
-         
+
         <div class="item">
             <table style=" height: 10%;" class="table table-striped table-bordered ">
                 <thead>
@@ -37,11 +38,14 @@
         </div>
         <div class="func">
 
-            <button class="btn btn-primary" onclick="sortByTime()">Sắp xếp</button> &nbsp; &nbsp; &nbsp;
+            <!-- <button class="btn btn-primary" onclick="sortByTime()">Sắp xếp</button> &nbsp; &nbsp; &nbsp;
             <button class="btn btn-danger" onclick="clearAll()">Xóa hết</button> &nbsp; &nbsp; &nbsp;
-            <!-- /* ========================== */ -->
             <button class="btn btn-success" onclick="showTimetable()">Lịch trực</button> &nbsp; &nbsp; &nbsp;
-            <div class="popup"  id="overlay">
+            <a target="_blank" class="btn btn-secondary" href="https://www.tiktok.com/"> <img class="tiktok"
+                    src="img/tiktok.png" alt=""></a> -->
+            <!-- <button class="btn btn-secondary" onclick="opentx()" >🎮</button> -->
+
+            <div class="popup" id="overlay">
                 <div class="tkb">
                     <img src="img/tkb5.jpg" alt="">
 
@@ -49,75 +53,90 @@
                 <button type="button" class=" btn btn-secondary close" onclick="closeTimetable()"
                     style="margin: 1vh; padding: 0.5vh 7vh;">X</button>
             </div>
-            <!-- /* ========================== */ -->
-            <a target="_blank" class="btn btn-secondary" href="https://www.tiktok.com/"> <img class="tiktok" src="img/tiktok.png" alt=""></a >
-                <!-- <button class="btn btn-secondary" onclick="opentx()" >🎮</button> -->
-               
         </div>
+        <div class="menu">
+            <div class="toggle"><ion-icon name="add-outline"></ion-icon></div>
+            <li style="--i:0;">
+                <a href="#" onclick="sortByTime()"><ion-icon name="cellular-outline"  onclick="sortByTime()"></ion-icon></a>
+            </li>
+            <li style="--i:1;">
+                <a href="#"><ion-icon name="trash-outline" onclick="clearAll()"></ion-icon></a>
+            </li>
+            <li style="--i:2;">
+                <a href="#" onclick="showTimetable()"><ion-icon name="calendar-outline" onclick="showTimetable()"></ion-icon></a>
+            </li>
+            <li style="--i:3;">
+                <a href="https://www.tiktok.com/"><ion-icon name="logo-tiktok"></ion-icon></a>
+            </li>
+            <li style="--i:4;">
+                <a href="#" onclick="opentx()"><ion-icon name="game-controller-outline"  onclick="opentx()"></ion-icon></ion-icon></a>
+            </li>
+        </div>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <!-- =======game================== -->
 
-
-<!-- =======game================== -->
-
-
-<div class="popup-game" id="overlaytx">
-    <div class="wallet">
-        <div class="wallet">
-            <div class="sodu">
-                <h5>Số dư: </h5>
-                <h4 id="sodu">0</h4>
-            </div>
-            <div class="naptien">
-                <button class="btn btn-warning" onclick="opennap()">Nạp tiền</button>
-            </div>
-            <!-- ==========popup-naptien====================== -->
-            <div class="popup-naptien" id="overlaynap">
-                <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">$</span>
-                    <input type="number" class="form-control" placeholder="Nhập tiền" id="napvaovi">
+        <div class="popup-game" id="overlaytx">
+            <div class="wallet">
+                <div class="wallet">
+                    <div class="sodu">
+                        <h5>Số dư: </h5>
+                        <h4 id="sodu">0</h4>
+                    </div>
+                    <div class="naptien">
+                        <button class="btn btn-warning" onclick="opennap()">Nạp tiền</button>
+                    </div>
+                    <!-- ==========popup-naptien====================== -->
+                    <div class="popup-naptien" id="overlaynap">
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">$</span>
+                            <input type="number" class="form-control" placeholder="Nhập tiền" id="napvaovi">
+                        </div>
+                        <button class="btn btn-success" onclick="naptien()">Nạp</button>
+                        <button class="btn btn-danger" onclick="closenap()">Đóng</button>
+                    </div>
+                    <!-- ===========popup-naptien============================ -->
                 </div>
-                <button class="btn btn-success" onclick="naptien()">Nạp</button>
-                <button class="btn btn-danger" onclick="closenap()">Đóng</button>
+
+                <h1>Chẵn lẻ</h1>
+                <h3>Hãy chọn Chẵn / lẻ</h3>
+
+                <div class="choose">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="even">
+                        <label class="btn btn-primary" for="even">
+                            Chẵn
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="odd">
+                        <label class="btn btn-danger" for="odd">
+                            Lẻ
+                        </label>
+                    </div>
+                </div>
+                <div class="bet">
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping">$</span>
+                        <input type="number" class="form-control" placeholder="Nhập tiền cược" id="betmoney">
+                    </div>
+                    <div>
+                        <button class="btn btn-success" id="bet" onclick="handleBet()">Cược</button>
+                    </div>
+                </div>
+                <div class="result">
+                    <!-- <h2>Kết quả</h2> -->
+                    <h1 id="result" style="color: greenyellow;"></h1>
+                </div>
+
+                <div class="close" id="closetx">
+                    <button class="btn btn-danger" onclick="closetx()">Đóng game</button>
+                </div>
             </div>
-            <!-- ===========popup-naptien============================ -->
-        </div>
-    
-    <h1>Chẵn lẻ</h1>
-    <h3>Hãy chọn Chẵn / lẻ</h3>
-    
-    <div class="choose">
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="even">
-            <label class="btn btn-primary" for="even">
-                Chẵn
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="odd">
-            <label class="btn btn-danger" for="odd">
-                Lẻ
-            </label>
-        </div>
-    </div>
-    <div class="bet">
-        <div class="input-group flex-nowrap">
-            <span class="input-group-text" id="addon-wrapping">$</span>
-            <input type="number" class="form-control" placeholder="Nhập tiền cược" id="betmoney">
-        </div>
-        <div>
-            <button class="btn btn-success" id="bet" onclick="handleBet()">Cược</button>
-        </div>
-    </div>
-    <div class="result">
-        <!-- <h2>Kết quả</h2> -->
-        <h1 id="result" style="color: greenyellow;"></h1>
-    </div>
-    
-    <div class="close" id="closetx">
-        <button class="btn btn-danger" onclick="closetx()">Đóng game</button>
-    </div>
-</div>
-<!-- ============================== -->
+            <!-- ============================== -->
+
     </center>
+
 
     <script src="script.js"></script>
 </body>
