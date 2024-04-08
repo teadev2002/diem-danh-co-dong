@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Trung Anh", "Thế  Anh", "Thanh Phong", "Hữu Tú",  
         "Mai Thắng", "Mai Lợi", "Thanh Hậu", "Minh Tú",
          "Hải Đăng", "Tấn Lộc", "Đức Chung", "Thiện Nghĩa", "Minh Hiếu", 
-         "Quốc Thái", "Hoàng Phúc", "Trung Hiếu", "Nhật Hoàng", "Thiên Bảo", "Nguyễn Thuận"
+         "Quốc Thái", "Hoàng Phúc", "Trung Hiếu", "Nhật Hoàng", "Thiên Bảo", "Minh Thuận"
     ];
 
     console.log(sampleData);
