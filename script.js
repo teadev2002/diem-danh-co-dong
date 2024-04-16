@@ -3,19 +3,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Khởi tạo dữ liệu từ Local Storage nếu có
     const storedData = JSON.parse(localStorage.getItem("attendanceData")) || {};
-    
+
     // Dữ liệu mẫu với tên có dấu
     const sampleData = [
-        "Trung Anh", "Thế  Anh", "Thanh Phong", "Hữu Tú",  
+        "Trung Anh", "Thế  Anh", "Thanh Phong", "Hữu Tú",
         "Mai Thắng", "Mai Lợi", "Thanh Hậu", "Minh Tú",
-         "Hải Đăng", "Tấn Lộc", "Đức Chung", "Thiện Nghĩa", "Minh Hiếu", 
-         "Quốc Thái", "Hoàng Phúc", "Trung Hiếu", "Nhật Hoàng", "Thiên Bảo", "Minh Thuận"
+        "Hải Đăng", "Tấn Lộc", "Đức Chung", "Thiện Nghĩa", "Minh Hiếu",
+        "Quốc Thái", "Hoàng Phúc", "Trung Hiếu", "Nhật Hoàng", "Thiên Bảo", "Minh Thuận"
     ];
 
     console.log(sampleData);
     // Điền bảng với dữ liệu từ Local Storage hoặc mẫu
     sampleData.forEach(name => {
-        const row = document.createElement("tr"); 
+        const row = document.createElement("tr");
         row.innerHTML = `
             <td style="text-align:center;">${name}</td>
             <td style="text-align:center;" contenteditable="true"> </td>
@@ -76,8 +76,8 @@ function clearAll() {
 function updateCurrentTime() {
     const currentTime = new Date().toLocaleTimeString('vi-VI', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     document.getElementById('currentTime').innerHTML = currentTime;
-    if(currentTime.match('22:00:00') || currentTime.match('22:25:00')){
-        alert("CHỤP HÌNH BÁO CÁO");
+    if (currentTime.match('22:00:00') || currentTime.match('22:25:00')) {
+       alert("CHỤP HÌNH BÁO CÁO");
     }
 }
 
@@ -94,11 +94,11 @@ function saveDataToLocalStorage() {
     // Save the data to Local Storage
     localStorage.setItem("attendanceData", JSON.stringify(dataToSave));
 
-   
-   
+
+
 }
 
- 
+
 function saveCheckboxState() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const checkboxState = {};
@@ -110,11 +110,11 @@ function saveCheckboxState() {
     localStorage.setItem('checkboxState', JSON.stringify(checkboxState));
 }
 function showTime() {
-	document.getElementById('currentDate').innerHTML = new Date().toLocaleDateString();
+    document.getElementById('currentDate').innerHTML = new Date().toLocaleDateString();
 }
 showTime();
 setInterval(function () {
-	showTime();
+    showTime();
 }, 1000);
 let sorted = false;
 
@@ -154,34 +154,34 @@ function sortByTime() {
         tableBody.appendChild(row);
     });
 }
- 
-function showTimetable(){
+
+function showTimetable() {
     document.getElementById('overlay').style.display = 'block';
- 
-  }
-  function closeTimetable(){
+
+}
+function closeTimetable() {
     document.getElementById('overlay').style.display = 'none';
-  }
+}
 
 
 
 
-  function opentx(){
+function opentx() {
     document.getElementById('overlaytx').style.display = 'block';
- 
-  }
-  function closetx(){
-    document.getElementById('overlaytx').style.display = 'none';
-  }
 
-  function opennap(){
+}
+function closetx() {
+    document.getElementById('overlaytx').style.display = 'none';
+}
+
+function opennap() {
     document.getElementById('overlaynap').style.display = 'block';
- 
-  }
-  function closenap(){
+
+}
+function closenap() {
     document.getElementById('overlaynap').style.display = 'none';
-  }
-  function naptien() {
+}
+function naptien() {
     // Get the entered value
     var enteredValue = document.getElementById("napvaovi").value;
 
@@ -262,6 +262,6 @@ function handleBet() {
 
 let toggle = document.querySelector('.toggle');
 let menu = document.querySelector('.menu');
-toggle.onclick = function(){
+toggle.onclick = function () {
     menu.classList.toggle('active')
 }
