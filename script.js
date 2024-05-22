@@ -76,7 +76,7 @@ function clearAll() {
 function updateCurrentTime() {
     const currentTime = new Date().toLocaleTimeString('vi-VI', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     document.getElementById('currentTime').innerHTML = currentTime;
-    if (currentTime.match('22:00:00') || currentTime.match('22:25:00') || currentTime.match('21:15:00') || currentTime.match('21:30:00')) {
+    if (currentTime.match('22:00:00') || currentTime.match('22:25:00') || currentTime.match('21:15:00') || currentTime.match('21:30:00') ) {
        alert("CHỤP HÌNH BÁO CÁO");
     }
 }
