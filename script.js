@@ -59,25 +59,62 @@ function updateTime(checkbox) {
 }
 
 
+// function clearAll() {
+//     if (confirm("Bạn có chắc chắn muốn xoá tất cả điểm danh không?")) {
+//         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+//         checkboxes.forEach(checkbox => {
+//             checkbox.checked = false;
+//             const row = checkbox.closest("tr").getElementsByTagName("td")[1];
+//             row.textContent = "";
+//         });
+
+//         // Xóa dữ liệu từ Local Storage
+//         localStorage.removeItem("attendanceData");
+//     }
+// }
 function clearAll() {
-    if (confirm("Bạn có chắc chắn muốn xoá tất cả điểm danh không?")) {
+    Swal.fire({
+      title: "CÓ CHẮC XÓA KO ?",
+      text: "BẠN KO THỂ HOÀN TÁC SAU KHI XÓA!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "XÓA!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Clear checkboxes and reset content
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(checkbox => {
-            checkbox.checked = false;
-            const row = checkbox.closest("tr").getElementsByTagName("td")[1];
-            row.textContent = "";
+          checkbox.checked = false;
+          const row = checkbox.closest("tr").getElementsByTagName("td")[1];
+          row.textContent = "";
         });
-
-        // Xóa dữ liệu từ Local Storage
+  
+        // Remove data from Local Storage
         localStorage.removeItem("attendanceData");
-    }
-}
-
+  
+        Swal.fire({
+          title: "ĐÃ XÓA!",
+          text: "Dữ Liệu Điểm Danh Đã Xóa",
+          icon: "success"
+        });
+      }
+    });
+  }
+  
 function updateCurrentTime() {
     const currentTime = new Date().toLocaleTimeString('vi-VI', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     document.getElementById('currentTime').innerHTML = currentTime;
-    if (currentTime.match('21:50:00') || currentTime.match('22:25:00') ) {
-       alert("CHỤP HÌNH BÁO CÁO");
+    if (currentTime.match('21:50:00') || currentTime.match('22:25:00') || currentTime.match('21:55:00') ) {
+      
+        Swal.fire({
+            position: "center",
+            icon: "warning",
+            title: "CHỤP HÌNH BÁO CÁO",
+            showConfirmButton: false,
+            timer: 2000
+          });
     }
 }
 
