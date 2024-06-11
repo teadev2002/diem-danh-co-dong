@@ -149,7 +149,7 @@ function closeTimetable() {
 // }
 
 
-
+Swal.fire("Bấm vào tên người để điểm danh \n Lưu ý TRÁNH bấm nhầm ô tên 2 lần nha!!! \n Bấm nhầm thì vẫn sửa được \n Yên tâm mà xài");
 
 
 
