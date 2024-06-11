@@ -12,14 +12,12 @@ document.addEventListener("DOMContentLoaded", function () {
         "Quốc Thái", "Hoàng Phúc", "Trung Hiếu", "Nhật Hoàng", "Thiên Bảo", "Minh Thuận","Đức Quy"
     ];
 
-    console.log(sampleData);
     // Điền bảng với dữ liệu từ Local Storage hoặc mẫu
     sampleData.forEach(name => {
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td style="text-align:center;">${name}</td>
-            <td style="text-align:center;" contenteditable="true"> </td>
-            <td ><input style="margin-left: 10%" class="form-check-input" type="checkbox" name="attendance" onclick="updateTime(this)" /></td>
+            <td style="text-align:center; padding: 2.5px 0px !important;" onclick="updateTime('${name}', this)">${name}</td>
+            <td style="text-align:center;" contenteditable="true" onclick="confirmTimeChange(this)"></td>
         `;
 
         // Nếu có dữ liệu đã lưu trữ, khôi phục giá trị thời gian
@@ -34,87 +32,81 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(updateCurrentTime, 1000);
 });
 
-// function updateTime(checkbox) {
-//     const currentTime = new Date().toLocaleTimeString('vi-VI', { hour: '2-digit', minute: '2-digit' });
-//     const row = checkbox.closest("tr").getElementsByTagName("td")[1];
-//     row.textContent = currentTime;
-
-//     // Lưu trạng thái dữ liệu vào Local Storage
-//     saveDataToLocalStorage();
-// }
-
-function updateTime(checkbox) {
+function updateTime(name, cell) {
     const currentTime = new Date().toLocaleTimeString('vi-VI', { hour: '2-digit', minute: '2-digit' });
-    const row = checkbox.closest("tr").getElementsByTagName("td")[1];
+    cell.nextElementSibling.textContent = currentTime;
 
-    // If the checkbox is checked, update the time; otherwise, delete the time value
-    if (checkbox.checked) {
-        row.textContent = currentTime;
-    } else {
-        row.textContent = "";
-    }
-
-    // Save the data to Local Storage
+    // Lưu trạng thái dữ liệu vào Local Storage
     saveDataToLocalStorage();
 }
 
+//=========
 
-// function clearAll() {
-//     if (confirm("Bạn có chắc chắn muốn xoá tất cả điểm danh không?")) {
-//         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-//         checkboxes.forEach(checkbox => {
-//             checkbox.checked = false;
-//             const row = checkbox.closest("tr").getElementsByTagName("td")[1];
-//             row.textContent = "";
-//         });
 
-//         // Xóa dữ liệu từ Local Storage
-//         localStorage.removeItem("attendanceData");
-//     }
-// }
+function confirmTimeChange(cell) {
+    const initialTime = cell.textContent;
+
+    cell.addEventListener('blur', function () {
+        const updatedTime = cell.textContent;
+
+        if (updatedTime !== initialTime) {
+            Swal.fire({
+                title: "Bạn Có Chắc Muốn Lưu?",
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Lưu",
+                denyButtonText: `Không Lưu`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    saveDataToLocalStorage();
+                    Swal.fire("Đã Lưu!", "", "success");
+                } else if (result.isDenied) {
+                    cell.textContent = initialTime;
+                    Swal.fire("Không Lưu", "", "info");
+                }
+            });
+        }
+    }, { once: true });
+}
+
+//===========
+
 function clearAll() {
     Swal.fire({
-      title: "CÓ CHẮC XÓA KO ?",
-      text: "BẠN KO THỂ HOÀN TÁC SAU KHI XÓA!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "XÓA!"
+        title: "CÓ CHẮC XÓA KO ?",
+        text: "BẠN KO THỂ HOÀN TÁC SAU KHI XÓA!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "XÓA!"
     }).then((result) => {
-      if (result.isConfirmed) {
-        // Clear checkboxes and reset content
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach(checkbox => {
-          checkbox.checked = false;
-          const row = checkbox.closest("tr").getElementsByTagName("td")[1];
-          row.textContent = "";
-        });
-  
-        // Remove data from Local Storage
-        localStorage.removeItem("attendanceData");
-  
-        Swal.fire({
-          title: "ĐÃ XÓA!",
-          text: "Dữ Liệu Điểm Danh Đã Xóa",
-          icon: "success"
-        });
-      }
+        if (result.isConfirmed) {
+            // Clear table content
+            const rows = document.querySelectorAll('#attendanceTableBody tr');
+            rows.forEach(row => {
+                row.querySelector('td:nth-child(2)').textContent = "";
+            });
+
+            // Remove data from Local Storage
+            localStorage.removeItem("attendanceData");
+
+            Swal.fire("ĐÃ XÓA!", "Dữ Liệu Điểm Danh Đã Xóa", "success");
+        }
     });
-  }
-  
+}
+
 function updateCurrentTime() {
     const currentTime = new Date().toLocaleTimeString('vi-VI', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     document.getElementById('currentTime').innerHTML = currentTime;
-    if (currentTime.match('21:50:00') || currentTime.match('22:25:00') || currentTime.match('21:55:00') ) {
-      
+    if (currentTime.match('21:50:00') || currentTime.match('22:25:00') || currentTime.match('21:55:00')) {
         Swal.fire({
             position: "center",
             icon: "warning",
             title: "CHỤP HÌNH BÁO CÁO",
             showConfirmButton: false,
             timer: 2000
-          });
+        });
     }
 }
 
@@ -130,22 +122,8 @@ function saveDataToLocalStorage() {
 
     // Save the data to Local Storage
     localStorage.setItem("attendanceData", JSON.stringify(dataToSave));
-
-
-
 }
 
-
-function saveCheckboxState() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    const checkboxState = {};
-
-    checkboxes.forEach((checkbox, index) => {
-        checkboxState[index] = checkbox.checked;
-    });
-
-    localStorage.setItem('checkboxState', JSON.stringify(checkboxState));
-}
 function showTime() {
     document.getElementById('currentDate').innerHTML = new Date().toLocaleDateString();
 }
@@ -153,152 +131,31 @@ showTime();
 setInterval(function () {
     showTime();
 }, 1000);
+
 let sorted = false;
 
-function sortByTime() {
-    const tableBody = document.getElementById("attendanceTableBody");
-    const rows = Array.from(tableBody.querySelectorAll("tr"));
-
-    // Toggle sorting direction
-    sorted = !sorted;
-
-    // Sort the rows based on the time value in the second column
-    rows.sort((rowA, rowB) => {
-        const timeA = rowA.querySelector("td:nth-child(2)").textContent;
-        const timeB = rowB.querySelector("td:nth-child(2)").textContent;
-
-        if (!timeA && !timeB) {
-            return 0;
-        } else if (!timeA) {
-            return 1;
-        } else if (!timeB) {
-            return -1;
-        } else {
-            // Convert time strings to Date objects for comparison
-            const dateA = new Date(`2000-01-01 ${timeA}`);
-            const dateB = new Date(`2000-01-01 ${timeB}`);
-            return sorted ? dateA - dateB : dateB - dateA; // Sort in ascending or descending order
-        }
-    });
-
-    // Remove existing rows from the table
-    while (tableBody.firstChild) {
-        tableBody.removeChild(tableBody.firstChild);
-    }
-
-    // Append sorted rows to the table
-    rows.forEach(row => {
-        tableBody.appendChild(row);
-    });
-}
+ 
 
 function showTimetable() {
-    document.getElementById('overlay').style.display = 'block';
-
+    document.getElementById("overlay").style.display = "block";
 }
+
 function closeTimetable() {
-    document.getElementById('overlay').style.display = 'none';
+    document.getElementById("overlay").style.display = "none";
 }
 
+// function opentx() {
+//     window.location.href = "teamx.html";
+// }
 
 
 
-function opentx() {
-    document.getElementById('overlaytx').style.display = 'block';
-
-}
-function closetx() {
-    document.getElementById('overlaytx').style.display = 'none';
-}
-
-function opennap() {
-    document.getElementById('overlaynap').style.display = 'block';
-
-}
-function closenap() {
-    document.getElementById('overlaynap').style.display = 'none';
-}
-function naptien() {
-    // Get the entered value
-    var enteredValue = document.getElementById("napvaovi").value;
-
-    // Convert the entered value to a number
-    var enteredAmount = parseFloat(enteredValue);
-
-    // Check if the entered amount is non-negative
-    if (enteredAmount >= 0) {
-        // Get the current balance
-        var currentBalance = parseFloat(document.getElementById("sodu").innerText);
-
-        // Update the balance by adding the entered amount
-        var newBalance = currentBalance + enteredAmount;
-
-        // Update the balance display
-        document.getElementById("sodu").innerText = newBalance;
-    } else {
-        // Show an error message or take other appropriate actions for negative input
-        alert("KHÔNG THỂ NẠP TIỀN DƯỚI 0");
-    }
-    closenap();
-}
-
-function handleBet() {
-    // Get user's choice
-    var userChoice = document.querySelector('input[name="flexRadioDefault"]:checked');
-    if (!userChoice) {
-        alert("Vui lòng chọn Chẵn hoặc Lẻ.");
-        return;
-    }
-
-    // Get user's bet amount
-    var betAmount = parseFloat(document.getElementById("betmoney").value);
-    if (isNaN(betAmount) || betAmount <= 0) {
-        alert("Vui lòng nhập số tiền cược hợp lệ.");
-        return;
-    }
-
-    // Get current balance
-    var currentBalance = parseFloat(document.getElementById("sodu").innerText);
-
-    // Check if the bet amount is less than or equal to the current balance
-    if (betAmount > currentBalance) {
-        alert("Số tiền cược không được lớn hơn số dư hiện tại.");
-        return;
-    }
-
-    // Generate a random number between 1 and 9
-    var randomNumber = Math.floor(Math.random() * 9) + 1;
-
-    // Determine if the result is even or odd
-    var isResultEven = randomNumber % 2 === 0;
-
-    // Variable to track win/loss status
-    var winStatus;
-
-    // Check user's choice
-    if ((userChoice.id === "even" && isResultEven) || (userChoice.id === "odd" && !isResultEven)) {
-        // User wins
-        winStatus = true;
-        alert("Thắng! Số ngẫu nhiên: " + randomNumber);
-    } else {
-        // User loses
-        winStatus = false;
-        alert("Thua! Số ngẫu nhiên: " + randomNumber);
-    }
-
-    // Update the balance display based on win/loss status
-    if (winStatus) {
-        currentBalance += betAmount;
-    } else {
-        currentBalance -= betAmount;
-    }
-
-    document.getElementById("sodu").innerText = currentBalance;
-}
 
 
-let toggle = document.querySelector('.toggle');
-let menu = document.querySelector('.menu');
-toggle.onclick = function () {
-    menu.classList.toggle('active')
-}
+
+
+
+
+
+
+ 
