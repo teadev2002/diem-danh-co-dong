@@ -73,7 +73,7 @@ function confirmTimeChange(cell) {
 
 function clearAll() {
     Swal.fire({
-        title: "CÓ CHẮC XÓA KO ?",
+        title: "CÓ CHẮC XÓA HẾT KO ?",
         text: "BẠN KO THỂ HOÀN TÁC SAU KHI XÓA!",
         icon: "warning",
         showCancelButton: true,
