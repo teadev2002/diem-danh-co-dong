@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (storedData[name]) {
             row.querySelector('td:nth-child(2)').textContent = storedData[name];
         }
-
+         
         tableBody.appendChild(row);
     });
 
@@ -148,12 +148,7 @@ function closeTimetable() {
 //     window.location.href = "teamx.html";
 // }
 
-
-Swal.fire("Bấm vào tên người để điểm danh \n Lưu ý TRÁNH bấm nhầm ô tên 2 lần nha!!! \n Bấm nhầm thì vẫn sửa được \n Yên tâm mà xài");
-
-
-
-
+ 
 
 
 
