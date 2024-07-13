@@ -149,10 +149,10 @@ function closeTimetable() {
 // }
 
  
-Swal.fire({
-    icon: "error",
-    title: "Oops...",
-    text: "Web bảo trì",
-    footer: '<a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Nhấn vào đây</a>'
-  });
+// Swal.fire({
+//     icon: "error",
+//     title: "Oops...",
+//     text: "Web bảo trì",
+//     footer: '<a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Nhấn vào đây</a>'
+//   });
  
