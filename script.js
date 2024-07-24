@@ -9,14 +9,14 @@ document.addEventListener("DOMContentLoaded", function () {
         "Trung Anh",  "Thanh Phong",  "Mai Thắng", "Mai Lợi",
         "Thanh Hậu", "Minh Tú", "Tấn Lộc",
         "Hải Đăng",  "Đức Chung","Thế  Anh", "Thiện Nghĩa", "Minh Hiếu",
-        "Quốc Thái", "Hoàng Phúc", "Trung Hiếu", "Nhật Hoàng", "Thiên Bảo", "Minh Thuận","Đức Quy"
+        "Quốc Thái", "Hoàng Phúc", "Trung Hiếu", "Nhật Hoàng 🌞", "Thiên Bảo 🔥", "Minh Thuận","Đức Quy 🐢"
     ];
 
     // Điền bảng với dữ liệu từ Local Storage hoặc mẫu
     sampleData.forEach(name => {
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td style="text-align:center; padding: 2.5px 0px !important;" onclick="updateTime('${name}', this)">${name}</td>
+            <td style="text-align:center; padding: 2.5px 0px !important;"  onclick="updateTime('${name}', this)">${name}</td>
             <td style="text-align:center;" contenteditable="true" onclick="confirmTimeChange(this)"></td>
         `;
 
@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
 function updateTime(name, cell) {
     const currentTime = new Date().toLocaleTimeString('vi-VI', { hour: '2-digit', minute: '2-digit' });
     cell.nextElementSibling.textContent = currentTime;
+   
+       
 
     // Lưu trạng thái dữ liệu vào Local Storage
     saveDataToLocalStorage();
@@ -99,7 +101,7 @@ function clearAll() {
 function updateCurrentTime() {
     const currentTime = new Date().toLocaleTimeString('vi-VI', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     document.getElementById('currentTime').innerHTML = currentTime;
-    if (currentTime.match('21:50:00') || currentTime.match('22:25:00') || currentTime.match('21:55:00')) {
+    if (currentTime.match('21:50:10') || currentTime.match('22:25:00') || currentTime.match('21:55:00')) {
         Swal.fire({
             position: "center",
             icon: "warning",
@@ -148,11 +150,12 @@ function closeTimetable() {
 //     window.location.href = "teamx.html";
 // }
 
- 
+
 // Swal.fire({
 //     icon: "error",
 //     title: "Oops...",
 //     text: "Web bảo trì",
 //     footer: '<a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Nhấn vào đây</a>'
 //   });
+
  
