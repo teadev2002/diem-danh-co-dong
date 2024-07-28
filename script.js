@@ -6,10 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Dữ liệu mẫu với tên có dấu
     const sampleData = [
-        "Trung Anh 👪",  "Thanh Phong 🌪️",  "Mai Thắng 🥇", "Mai Lợi 🥇",
-        "Thanh Hậu ♠️", "Minh Tú 🌠", "Tấn Lộc ☘️",
-        "Hải Đăng 🔦",  "Đức Chung 👦", "Thiện Nghĩa 🗿", "Minh Hiếu ⚰️",
-        "Quốc Thái 🚽", "Hoàng Phúc 💥", "Trung Hiếu 🛠️", "Nhật Hoàng 🌞", "💵 Thiên Bảo 🔥", "Minh Thuận 🎉 ","Đức Quy 🐢"
+        "Trung Anh ",  "Thanh Phong ",  "Mai Thắng ", "Mai Lợi ",
+        "Thanh Hậu ", "Minh Tú ", "Tấn Lộc ",
+        "Hải Đăng ",  "Đức Chung ", "Minh Hiếu ", "Quốc Thái 🚽",
+        "Thiện Nghĩa 🗿", "Hoàng Phúc 💥", "Trung Hiếu 🛠️", "Nhật Hoàng 🌞", "Thiên Bảo 🔥", "Minh Thuận 🥟 ","Đức Quy 🐢"
     ];
 
     // Điền bảng với dữ liệu từ Local Storage hoặc mẫu
@@ -158,4 +158,7 @@ function closeTimetable() {
 //     footer: '<a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Nhấn vào đây</a>'
 //   });
 
- 
+// "Trung Anh 👪",  "Thanh Phong 🌪️",  "Mai Thắng 🥇", "Mai Lợi 🥇",
+// "Thanh Hậu ♠️", "Minh Tú 🌠", "Tấn Lộc ☘️",
+// "Hải Đăng 🔦",  "Đức Chung 👦", "Thiện Nghĩa 🗿", "Minh Hiếu ⚰️",
+// "Quốc Thái 🚽", "Hoàng Phúc 💥", "Trung Hiếu 🛠️", "Nhật Hoàng 🌞", "💵 Thiên Bảo 🔥", "Minh Thuận 🎉 ","Đức Quy 🐢"
