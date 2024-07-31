@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "Thanh Hậu ♠️", "Minh Tú 🌠", "Tấn Lộc ☘️",
         "Hải Đăng 💡",  "Đức Chung 👦", "Minh Hiếu ⚰️", "Quốc Thái 🚽",
         "Thiện Nghĩa 👺", "Hoàng Phúc 💣", "Trung Hiếu 🔫",
-        "Nhật Hoàng 🌞", "Thiên Bảo 🔥", "Minh Thuận 🥟 ","Đức Quy 🐢"
+        "Nhật Hoàng 🌞", "Thiên Bảo 🔥", "Minh Thuận 🥟 ","Đức Quy 🐢",
+        "Hoan" , "Toàn", "Quân", "Nam"
     ];
 
     // Điền bảng với dữ liệu từ Local Storage hoặc mẫu
