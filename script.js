@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     sampleData.forEach(name => {
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td style="text-align:center; padding: 2.5px 0px !important;"  onclick="updateTime('${name}', this)">${name}</td>
+            <td style="text-align:center;"  onclick="updateTime('${name}', this)">${name}</td>
             <td style="text-align:center;" contenteditable="true" onclick="confirmTimeChange(this)"></td>
         `;
 
