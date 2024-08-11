@@ -147,18 +147,7 @@ function showTimetable() {
 function closeTimetable() {
     document.getElementById("overlay").style.display = "none";
 }
-// ------------------- test new ---------------
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-}, false);
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'PrintScreen') {
-        e.preventDefault();
-    }
-    if (e.ctrlKey && (e.key === 'S' || e.key === 'U')) {
-        e.preventDefault();
-    }
-});
+ 
 
 
 // function opentx() {

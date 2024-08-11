@@ -1,9 +1,4 @@
-/* ------------------- test new --------------- */
-html, body {
-    overscroll-behavior: none;
-}
-/* ------------------- test new --------------- */
-
+ 
 .table>:not(caption)>*>* {
     padding: 0 !important;
 }
