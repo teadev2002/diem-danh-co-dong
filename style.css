@@ -220,7 +220,7 @@ body {
     z-index: -1;
     padding: 3px;
     border-radius: 10px;
-    animation: 3s spin linear infinite;
+    animation: 0.5s spin linear infinite;
   }
   .table::before{
     filter: blur(1.5rem);
