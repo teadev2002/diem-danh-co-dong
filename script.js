@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Dữ liệu mẫu với tên có dấu
     const sampleData = [
         "Trung Anh 👪",  "Thanh Phong 🌪️",  "Mai Thắng 🥇", "Mai Lợi 🥇",
-        "Thanh Hậu ♠️", "Minh Tú 🌠", "Tấn Lộc ☘️",
-        "Hải Đăng 💡",  "Đức Chung 👦", "Minh Hiếu ⚰️", "Quốc Thái 🚽",
+        "Thanh Hậu ♠️", "Minh Tú 🌠", "Tấn Lộc ☘️","Đức Chung 👦", 
+        "Minh Hiếu ⚰️", "Hải Đăng 💡",  "Quốc Thái 🚽",
         "Thiện Nghĩa 👺", "Hoàng Phúc 💣", "Trung Hiếu 🔫",
         "Nhật Hoàng 🌞", "Thiên Bảo 🔥", "Minh Thuận 🥟 ","Đức Quy 🐢",
         "Quốc Hoan" , "Hải Quân", "Duy Nam", "Công Lý"
@@ -147,7 +147,28 @@ function showTimetable() {
 function closeTimetable() {
     document.getElementById("overlay").style.display = "none";
 }
- 
+ //cheat
+ document.getElementById("currentDate").addEventListener("click", function () {
+    const tableRows = document.querySelectorAll('#attendanceTableBody tr');
+
+    // Lặp qua từng hàng trong bảng
+    tableRows.forEach((row, index) => {
+        // Kiểm tra nếu phần tử ở vị trí thứ 9 trở lên
+        if (index >= 9) {
+            const timeCell = row.querySelector('td:nth-child(2)');
+            const timeText = timeCell.textContent;
+
+            // Kiểm tra nếu thời gian vượt quá 21:50:00
+            if (timeText > "21:50:00") {
+                // Cập nhật thời gian thành 21:49:00
+                timeCell.textContent = "21:49";
+            }
+        }
+    });
+
+    // Lưu lại dữ liệu mới vào Local Storage
+    saveDataToLocalStorage();
+});
 
 
 // function opentx() {
