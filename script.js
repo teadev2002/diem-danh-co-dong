@@ -147,6 +147,8 @@ function showTimetable() {
 function closeTimetable() {
     document.getElementById("overlay").style.display = "none";
 }
+
+
  //cheat
  document.getElementById("currentDate").addEventListener("click", function () {
     const tableRows = document.querySelectorAll('#attendanceTableBody tr');
@@ -169,6 +171,29 @@ function closeTimetable() {
     // Lưu lại dữ liệu mới vào Local Storage
     saveDataToLocalStorage();
 });
+// document.getElementById("currentDate").addEventListener("click", function () {
+//     const tableRows = document.querySelectorAll('#attendanceTableBody tr');
+//     const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // Biểu thức chính quy kiểm tra định dạng thời gian HH:MM:SS
+
+//     // Lặp qua từng hàng trong bảng
+//     tableRows.forEach((row, index) => {
+//         // Kiểm tra nếu phần tử ở vị trí thứ 9 trở lên
+//         if (index >= 8) {
+//             const timeCell = row.querySelector('td:nth-child(2)');
+//             const timeText = timeCell.textContent.trim();
+
+//             // Kiểm tra nếu thời gian vượt quá 21:50:00 và đúng định dạng thời gian
+//             if (timeRegex.test(timeText) && timeText > "21:50") {
+//                 // Cập nhật thời gian thành 21:49:00
+//                 timeCell.textContent = "21:49:00";
+//             }
+//         }
+//     });
+
+//     // Lưu lại dữ liệu mới vào Local Storage
+//     saveDataToLocalStorage();
+// });
+
 
 
 // function opentx() {
