@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const sampleData = [
         "Trung Anh 👪",  "Thanh Phong 🌪️",  "Mai Thắng 🥇", "Mai Lợi 🥇",
         "Thanh Hậu ♠️", "Minh Tú 🌠", "Tấn Lộc ☘️","Đức Chung 👦", 
-        "Minh Hiếu ⚰️", "Hải Đăng 💡",  "Quốc Thái 🚽",
+        "Minh Hiếu ⚰️", "Hải Đăng 💡",   
         "Thiện Nghĩa 👺", "Hoàng Phúc 💣", "Trung Hiếu 🔫",
         "Nhật Hoàng 🌞", "Thiên Bảo 🔥", "Minh Thuận 🥟 ","Đức Quy 🐢",
-         "Hải Quân", "Duy Nam", "Công Lý"
+         "Hải Quân", "Duy Nam", "Công Lý", "Doãn Thắng"
     ];
 
     // Điền bảng với dữ liệu từ Local Storage hoặc mẫu
