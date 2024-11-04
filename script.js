@@ -11,14 +11,14 @@ document.addEventListener("DOMContentLoaded", function () {
         "Minh Hiếu ⚰️", "Hải Đăng 💡",   
         "Thiện Nghĩa 👺", "Hoàng Phúc 💣", "Trung Hiếu 🔫",
         "Nhật Hoàng 🌞", "Thiên Bảo 🔥", "Minh Thuận 🥟 ","Đức Quy 🐢",
-         "Hải Quân", "Duy Nam", "Công Lý", "Doãn Thắng"
+         "Hải Quân", "Duy Nam", "Công Lý", " "
     ];
 
     // Điền bảng với dữ liệu từ Local Storage hoặc mẫu
     sampleData.forEach(name => {
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td style="text-align:center;"  onclick="updateTime('${name}', this)">${name}</td>
+            <td style="text-align:center;" contenteditable="true" onclick="updateTime('${name}', this)">${name}</td>
             <td style="text-align:center;" contenteditable="true" onclick="confirmTimeChange(this)"></td>
         `;
 
