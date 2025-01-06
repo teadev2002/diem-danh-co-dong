@@ -1,67 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Điểm danh cơ động</title>
-    <linK rel="shortcut icon" href="img/dangvuong.jpg" />
+    <link rel="shortcut icon" href="img/dangvuong.jpg" />
     <link rel="stylesheet" href="style.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <center>
-        <div class="header" id="header">
-            <h4 id="currentDate"></h4>
-            <h4 id="currentTime"></h4>
-        </div>
-        <div class="item">
-            <table style="height: 10%; display: inline-flexbox; " class="table table-striped table-bordered shadow table-hover" >
-                <thead>
-                    <tr class="table-dark">
-                        <th class="text-head">Tên</th>
-                        <th class="text-head" >Thời gian</th>
-                    </tr>
-                </thead>
-                <tbody id="attendanceTableBody">
-                </tbody>
-            </table>
-        </div>
-        <!-- <ul style="list-style: none; display: flex; justify-content: space-evenly;">
+      <div class="header" id="header">
+        <h4 id="currentDate"></h4>
+        <h4 id="currentTime"></h4>
+      </div>
+      <div class="item">
+        <table
+          style="height: 10%; display: inline-flexbox"
+          class="table table-striped table-bordered shadow table-hover"
+        >
+          <thead>
+            <tr class="table-dark">
+              <th class="text-head">Tên</th>
+              <th class="text-head">Thời gian</th>
+            </tr>
+          </thead>
+          <tbody id="attendanceTableBody"></tbody>
+        </table>
+      </div>
+      <!-- <ul style="list-style: none; display: flex; justify-content: space-evenly;">
             <li>  <a href="#"><ion-icon name="trash-outline" onclick="clearAll()" data-intro="xóa hết thì bấm vào đây"></ion-icon></a></li>
             <li> <a href="#" onclick="showTimetable()"><ion-icon name="calendar-outline" onclick="showTimetable()"></ion-icon></a></li>
         </ul>
        -->
-         <span style="width: 150%;" name="trash-outline" onclick="clearAll()"  ><button class="btn btn-outline-danger">🗑️</button></span>  &nbsp;  &nbsp; &nbsp;
-          <span name="calendar-outline" onclick="showTimetable()"> <button class="btn btn-outline-primary">🗓️</button> </span> 
-        
-        <div class="func">
-            <div class="popup" id="overlay">
-                <div style="display: block;" class="tkb">
-                    <!-- <img src="img/01.png" alt="">   -->
-                   
-                </div>
-                <button type="button" class="btn btn-secondary close" onclick="closeTimetable()"
-                    style="margin: 1vh; padding: 0.5vh 7vh;">X</button>
-            </div>
+      <span style="width: 150%" name="trash-outline" onclick="clearAll()"
+        ><button class="btn btn-outline-danger">🗑️</button></span
+      >
+      &nbsp; &nbsp; &nbsp;
+      <!-- <span name="calendar-outline" onclick="showTimetable()">
+        <button class="btn btn-outline-primary">🗓️</button>
+      </span> -->
+      <button class="btn btn-outline-dark" style="--i: 3">
+        <a target="_blank" href="https://www.tiktok.com/"
+          ><ion-icon name="help"></ion-icon
+        ></a>
+      </button>
+      <div class="func">
+        <div class="popup" id="overlay">
+          <div style="display: block" class="tkb">
+            <!-- <img src="img/01.png" alt="" /> -->
+            <h3 style="color: rgb(184, 184, 8)">Tính năng premium 👑</h3>
+          </div>
+          <button
+            type="button"
+            class="btn btn-secondary close"
+            onclick="closeTimetable()"
+            style="margin: 1vh; padding: 0.5vh 7vh"
+          >
+            X
+          </button>
         </div>
-       
+      </div>
 
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+      <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+      ></script>
+      <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+      ></script>
     </center>
 
- 
-
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
-        <!-- <div class="menu">
+<!-- <div class="menu">
             <div class="toggle"><ion-icon name="add-outline"></ion-icon></div>
             <li style="--i:0;">
                 <a href="#" onclick="sortByTime()"><ion-icon  name="cellular-outline" onclick="sortByTime()"></ion-icon></a>
