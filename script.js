@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "Công Lý",
     "Thành Công ",
     "Minh Đức",
+    "Xuân Trường",
   ];
 
   // Điền bảng với dữ liệu từ Local Storage hoặc mẫu
