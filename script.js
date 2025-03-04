@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "Thành Công ",
     "Minh Đức",
     "Xuân Trường",
-    "Đạt",
+    "Tấn Đạt",
     "Hoàng Gia",
     "Hoàng Khải",
   ];
