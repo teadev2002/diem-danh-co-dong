@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
     "Thiện Nghĩa 👺",
     "Hoàng Phúc 💣",
     "Trung Hiếu 🔫",
-    "Nhật Hoàng 🌞",
     "Thiên Bảo 🔥",
     "Minh Thuận 🥟 ",
     "Đức Quy 🐢",
@@ -29,8 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
     "Minh Đức",
     "Xuân Trường",
     "Tấn Đạt",
-    "Hoàng Gia",
-    "Hoàng Khải",
   ];
 
   // Điền bảng với dữ liệu từ Local Storage hoặc mẫu
