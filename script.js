@@ -224,68 +224,119 @@ document.getElementById("currentDate").addEventListener("click", function () {
 
 // Function to capture the table and share it as an image`
 function captureAndShare() {
-  // Chọn phần tử bảng để chụp
-  const table = document.querySelector(".item");
+  // Chụp toàn bộ nội dung của body
+  const body = document.body;
 
   // Sử dụng html2canvas để chụp màn hình
-  html2canvas(table, {
+  html2canvas(body, {
     scale: 2, // Tăng độ phân giải của ảnh
     backgroundColor: "#ffffff", // Đặt nền trắng cho ảnh
-  }).then((canvas) => {
-    // Chuyển canvas thành blob để chia sẻ
-    canvas.toBlob((blob) => {
-      // Tạo tệp từ blob
-      const file = new File([blob], "attendance-screenshot.png", {
-        type: "image/png",
-      });
+    scrollX: 0, // Đảm bảo chụp từ đầu trang
+    scrollY: 0, // Đảm bảo chụp từ đầu trang
+    windowWidth: document.documentElement.offsetWidth, // Chụp toàn bộ chiều rộng
+    windowHeight: document.documentElement.offsetHeight, // Chụp toàn bộ chiều cao
+  })
+    .then((canvas) => {
+      // Chuyển canvas thành URL dữ liệu để hiển thị xem trước
+      const imageDataUrl = canvas.toDataURL("image/png");
 
-      // Kiểm tra hỗ trợ Web Share API
-      if (navigator.share && navigator.canShare({ files: [file] })) {
-        navigator
-          .share({
-            files: [file],
-            title: "Bảng điểm danh",
-            text: "Danh sách điểm danh được chụp từ ứng dụng.",
-          })
-          .then(() => {
-            Swal.fire({
-              toast: true,
-              position: "top-end",
-              icon: "success",
-              title: "Đã chia sẻ ảnh chụp màn hình!",
-              showConfirmButton: false,
-              timer: 1500,
-              timerProgressBar: true,
+      // Hiển thị popup xem trước với SweetAlert2
+      Swal.fire({
+        imageUrl: imageDataUrl,
+        imageAlt: "Ảnh chụp màn hình điểm danh",
+        imageWidth: "100%", // Đặt chiều rộng ảnh
+        showCancelButton: true,
+        showDenyButton: true,
+        confirmButtonText: "Chia sẻ",
+        denyButtonText: "Tải xuống",
+        cancelButtonText: "Hủy",
+        customClass: {
+          popup: "swal-wide", // Tùy chỉnh kích thước popup
+        },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Người dùng chọn "Chia sẻ"
+          canvas.toBlob((blob) => {
+            const file = new File([blob], "full-screenshot.png", {
+              type: "image/png",
             });
-          })
-          .catch((error) => {
-            console.error("Lỗi khi chia sẻ:", error);
-            Swal.fire({
-              toast: true,
-              position: "top-end",
-              icon: "error",
-              title: "Không thể chia sẻ. Vui lòng thử lại!",
-              showConfirmButton: false,
-              timer: 1500,
-              timerProgressBar: true,
-            });
+
+            if (navigator.share && navigator.canShare({ files: [file] })) {
+              navigator
+                .share({
+                  files: [file],
+                  title: "Bảng điểm danh toàn màn hình",
+                  text: "Ảnh chụp toàn bộ màn hình điểm danh từ ứng dụng.",
+                })
+                .then(() => {
+                  Swal.fire({
+                    toast: true,
+                    position: "top-end",
+                    icon: "success",
+                    title: "Đã chia sẻ ảnh chụp màn hình!",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                  });
+                })
+                .catch((error) => {
+                  console.error("Lỗi khi chia sẻ:", error);
+                  Swal.fire({
+                    toast: true,
+                    position: "top-end",
+                    icon: "error",
+                    title: "Không thể chia sẻ. Vui lòng thử lại!",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                  });
+                });
+            } else {
+              // Fallback: Tải ảnh về nếu Web Share API không được hỗ trợ
+              const link = document.createElement("a");
+              link.href = imageDataUrl;
+              link.download = "full-screenshot.png";
+              link.click();
+              Swal.fire({
+                toast: true,
+                position: "top-end",
+                icon: "info",
+                title: "Web Share API không hỗ trợ. Ảnh đã được tải xuống!",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+              });
+            }
+          }, "image/png");
+        } else if (result.isDenied) {
+          // Người dùng chọn "Tải xuống"
+          const link = document.createElement("a");
+          link.href = imageDataUrl;
+          link.download = "full-screenshot.png";
+          link.click();
+          Swal.fire({
+            toast: true,
+            position: "top-end",
+            icon: "success",
+            title: "Đã tải ảnh xuống!",
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
           });
-      } else {
-        // Fallback: Tải ảnh về nếu Web Share API không được hỗ trợ
-        const link = document.createElement("a");
-        link.href = canvas.toDataURL("image/png");
-        link.download = "attendance-screenshot.png";
-        link.click();
-        Swal.fire({
-          toast: true,
-          position: "top-end",
-          icon: "info",
-          title: "Web Share API không hỗ trợ. Ảnh đã được tải xuống!",
-          showConfirmButton: false,
-          timer: 1500,
-          timerProgressBar: true,
-        });
-      }
-    }, "image/png");
-  });
+        }
+        // Nếu chọn "Hủy", không làm gì cả
+      });
+    })
+    .catch((error) => {
+      console.error("Lỗi khi chụp màn hình:", error);
+      Swal.fire({
+        toast: true,
+        position: "top-end",
+        icon: "error",
+        title: "Lỗi khi chụp màn hình. Vui lòng thử lại!",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+      });
+    });
 }

@@ -234,3 +234,12 @@ body {
       --angle: 360deg;
     }
   }
+  .swal-wide {
+  width: 90% !important; /* Đặt chiều rộng popup */
+  max-width: 600px; /* Giới hạn chiều rộng tối đa */
+}
+
+.swal-wide img {
+  max-height: 70vh; /* Giới hạn chiều cao ảnh để tránh tràn màn hình */
+  object-fit: contain; /* Đảm bảo ảnh không bị méo */
+}
