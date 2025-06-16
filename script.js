@@ -221,41 +221,71 @@ document.getElementById("currentDate").addEventListener("click", function () {
   // Lưu lại dữ liệu mới vào Local Storage
   saveDataToLocalStorage();
 });
-// document.getElementById("currentDate").addEventListener("click", function () {
-//     const tableRows = document.querySelectorAll('#attendanceTableBody tr');
-//     const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // Biểu thức chính quy kiểm tra định dạng thời gian HH:MM:SS
 
-//     // Lặp qua từng hàng trong bảng
-//     tableRows.forEach((row, index) => {
-//         // Kiểm tra nếu phần tử ở vị trí thứ 9 trở lên
-//         if (index >= 8) {
-//             const timeCell = row.querySelector('td:nth-child(2)');
-//             const timeText = timeCell.textContent.trim();
+// Function to capture the table and share it as an image`
+function captureAndShare() {
+  // Chọn phần tử bảng để chụp
+  const table = document.querySelector(".item");
 
-//             // Kiểm tra nếu thời gian vượt quá 21:50:00 và đúng định dạng thời gian
-//             if (timeRegex.test(timeText) && timeText > "21:50") {
-//                 // Cập nhật thời gian thành 21:49:00
-//                 timeCell.textContent = "21:49:00";
-//             }
-//         }
-//     });
+  // Sử dụng html2canvas để chụp màn hình
+  html2canvas(table, {
+    scale: 2, // Tăng độ phân giải của ảnh
+    backgroundColor: "#ffffff", // Đặt nền trắng cho ảnh
+  }).then((canvas) => {
+    // Chuyển canvas thành blob để chia sẻ
+    canvas.toBlob((blob) => {
+      // Tạo tệp từ blob
+      const file = new File([blob], "attendance-screenshot.png", {
+        type: "image/png",
+      });
 
-//     // Lưu lại dữ liệu mới vào Local Storage
-//     saveDataToLocalStorage();
-// });
-
-// function opentx() {
-//     window.location.href = "teamx.html";
-// }
-
-// Swal.fire({
-//     icon: "error",
-//     title: "Oops...",
-//     text: "Web bảo trì",
-//     footer: '<a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Nhấn vào đây</a>'
-//   });
-
-// "Trung Anh 👪",  "Thanh Phong 🌪️",  "Mai Thắng 🥇", "Mai Lợi 🥇",
-// "Thanh Hậu ♠️", "Minh Tú 🌠", "Tấn Lộc ☘️",
-// "Hải Đăng 🔦",  "Đức Chung 👦", "Thiện Nghĩa 🗿", "Minh Hiếu ⚰️",
-// "Quốc Thái 🚽", "Hoàng Phúc 💥", "Trung Hiếu 🛠️", "Nhật Hoàng 🌞", "💵 Thiên Bảo 🔥", "Minh Thuận 🎉 ","Đức Quy 🐢"
+      // Kiểm tra hỗ trợ Web Share API
+      if (navigator.share && navigator.canShare({ files: [file] })) {
+        navigator
+          .share({
+            files: [file],
+            title: "Bảng điểm danh",
+            text: "Danh sách điểm danh được chụp từ ứng dụng.",
+          })
+          .then(() => {
+            Swal.fire({
+              toast: true,
+              position: "top-end",
+              icon: "success",
+              title: "Đã chia sẻ ảnh chụp màn hình!",
+              showConfirmButton: false,
+              timer: 1500,
+              timerProgressBar: true,
+            });
+          })
+          .catch((error) => {
+            console.error("Lỗi khi chia sẻ:", error);
+            Swal.fire({
+              toast: true,
+              position: "top-end",
+              icon: "error",
+              title: "Không thể chia sẻ. Vui lòng thử lại!",
+              showConfirmButton: false,
+              timer: 1500,
+              timerProgressBar: true,
+            });
+          });
+      } else {
+        // Fallback: Tải ảnh về nếu Web Share API không được hỗ trợ
+        const link = document.createElement("a");
+        link.href = canvas.toDataURL("image/png");
+        link.download = "attendance-screenshot.png";
+        link.click();
+        Swal.fire({
+          toast: true,
+          position: "top-end",
+          icon: "info",
+          title: "Web Share API không hỗ trợ. Ảnh đã được tải xuống!",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+        });
+      }
+    }, "image/png");
+  });
+}
