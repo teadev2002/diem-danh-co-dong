@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
     "Thiện Nghĩa 👺",
     "Hoàng Phúc 💣",
     "Trung Hiếu 🔫",
-    "Thiên Bảo 🔥",
     "Minh Thuận 🥟 ",
     "Đức Quy 🐢",
     "Hải Quân ",
